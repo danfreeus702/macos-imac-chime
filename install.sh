@@ -26,8 +26,9 @@ chmod 644 /Users/Shared/chime/chime-30s.mp3
 echo "==> Installing scripts"
 mkdir -p "$HOME/Library/Scripts"
 cp "$SCRIPT_DIR/scripts/imac-chime.sh" "$HOME/Library/Scripts/imac-chime.sh"
+cp "$SCRIPT_DIR/scripts/imac-login-chime.sh" "$HOME/Library/Scripts/imac-login-chime.sh"
 cp "$SCRIPT_DIR/scripts/imac-shutdown-chime.sh" "$HOME/Library/Scripts/imac-shutdown-chime.sh"
-chmod 755 "$HOME/Library/Scripts/imac-chime.sh" "$HOME/Library/Scripts/imac-shutdown-chime.sh"
+chmod 755 "$HOME/Library/Scripts/imac-chime.sh" "$HOME/Library/Scripts/imac-login-chime.sh" "$HOME/Library/Scripts/imac-shutdown-chime.sh"
 
 echo "==> Installing LaunchAgents"
 mkdir -p "$HOME/Library/LaunchAgents"
