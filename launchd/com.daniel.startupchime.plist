@@ -6,10 +6,7 @@
   <string>com.daniel.startupchime</string>
   <key>ProgramArguments</key>
   <array>
-    <string>/usr/bin/afplay</string>
-    <string>-v</string>
-    <string>1.2</string>
-    <string>/Users/Shared/chime/chime-30s.mp3</string>
+    <string>/Users/daniel/Library/Scripts/imac-login-chime.sh</string>
   </array>
   <key>RunAtLoad</key>
   <true/>

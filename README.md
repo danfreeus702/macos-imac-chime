@@ -13,8 +13,9 @@ For shutdown, the old `LogoutHook` is unreliable on modern macOS. This project i
 ## Files
 
 - `scripts/imac-chime.sh` — plays the MP3 with `afplay -v 1.2`
+- `scripts/imac-login-chime.sh` — plays only on the **first login after a boot** (uses a boot-time marker at `/Users/Shared/chime/.last-login-boot`)
 - `scripts/imac-shutdown-chime.sh` — traps SIGTERM/SIGINT/SIGHUP and plays the chime
-- `launchd/com.daniel.startupchime.plist` — `RunAtLoad` login chime
+- `launchd/com.daniel.startupchime.plist` — `RunAtLoad` login chime, calls `imac-login-chime.sh`
 - `launchd/com.daniel.shutdownchime.plist` — always-on background job with `AlwaysSIGTERMOnShutdown`
 - `prepare-clip.sh` — optional helper to trim a source MP3 to 30 seconds with `ffmpeg`
 - `install.sh` — installs audio, scripts, and both LaunchAgents
