@@ -8,16 +8,16 @@ Plays a 15-second audio clip on the **first login after a boot** and again at **
 
 - **Firmware bong is left untouched.** macOS cannot play an arbitrary MP3 before the OS boots.
 - **Login chime:** a `RunAtLoad` LaunchAgent calls `imac-login-chime.sh`, which checks a boot-time marker and plays only once per boot.
-- **Shutdown chime:** a root **LaunchDaemon** stays alive and plays the clip when launchd sends `SIGTERM` at shutdown (`AlwaysSIGTERMOnShutdown`). It uses `launchctl asuser 501 afplay` so audio reaches the logged-in user session.
+- **Shutdown chime:** a small Cocoa observer app (`ShutdownChime.swift`) runs as a LaunchAgent. It watches macOS's real logout/restart/shutdown Apple Event and delays termination until the 15-second clip finishes.
 
-The old `LogoutHook` is not used — it is unreliable on modern macOS.
+The old `LogoutHook` and the `SIGTERM`/LaunchDaemon approach are not used — neither is reliable on modern macOS.
 
 ## Files
 
 - `scripts/imac-login-chime.sh` — one-shot login chime (15s clip, boot-time marker)
-- `scripts/imac-shutdown-chime-daemon.sh` — shutdown trap, plays as user 501
+- `scripts/ShutdownChime.swift` — Cocoa app that detects shutdown and plays the chime
 - `launchd/com.daniel.startupchime.plist` — user LaunchAgent
-- `launchd/com.daniel.shutdownchime.plist` — system LaunchDaemon
+- `launchd/com.daniel.shutdownchime.plist` — user LaunchAgent for the observer app
 - `prepare-clip.sh` — trims a source MP3 to 15 seconds with `ffmpeg`
 - `install.sh` — installs everything
 
@@ -43,18 +43,18 @@ Audio is **not included**. Supply your own clip.
 launchctl kickstart -k gui/$(id -u)/com.daniel.startupchime
 
 # Shutdown chime
-sudo launchctl kill SIGTERM system/com.daniel.shutdownchime
+# Shutdown chime is verified by restarting the Mac
 ```
 
 ## Uninstall
 
 ```sh
 launchctl unload -w ~/Library/LaunchAgents/com.daniel.startupchime.plist
-sudo launchctl unload -w /Library/LaunchDaemons/com.daniel.shutdownchime.plist
+launchctl unload -w ~/Library/LaunchAgents/com.daniel.shutdownchime.plist
 rm ~/Library/LaunchAgents/com.daniel.startupchime.plist
-sudo rm /Library/LaunchDaemons/com.daniel.shutdownchime.plist
-rm ~/Library/Scripts/imac-login-chime.sh
-sudo rm /usr/local/bin/imac-shutdown-chime-daemon.sh /Users/Shared/chime/chime-15s.mp3
+rm ~/Library/LaunchAgents/com.daniel.shutdownchime.plist
+rm ~/Library/Scripts/imac-login-chime.sh ~/Library/Scripts/ShutdownChime
+rm /Users/Shared/chime/chime-15s.mp3
 ```
 
 License: MIT for the code. Audio remains under its original copyright.
