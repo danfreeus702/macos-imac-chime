@@ -34,7 +34,6 @@ Audio is **not included**. Supply your own clip.
 
 - **Volume:** edit `-v 1.2` in the scripts.
 - **Duration:** `prepare-clip.sh` uses `-t 15`.
-- **User ID:** the daemon uses `asuser 501`; change if the target user has a different UID.
 
 ## Test
 
