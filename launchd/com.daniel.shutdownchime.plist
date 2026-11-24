@@ -6,7 +6,7 @@
   <string>com.daniel.shutdownchime</string>
   <key>ProgramArguments</key>
   <array>
-    <string>/Users/daniel/Library/Scripts/imac-shutdown-chime.sh</string>
+    <string>/usr/local/bin/imac-shutdown-chime-daemon.sh</string>
   </array>
   <key>RunAtLoad</key>
   <true/>
@@ -17,8 +17,8 @@
   <key>ExitTimeOut</key>
   <integer>60</integer>
   <key>StandardOutPath</key>
-  <string>/tmp/imac-shutdown-chime.log</string>
+  <string>/tmp/imac-shutdown-chime-daemon.log</string>
   <key>StandardErrorPath</key>
-  <string>/tmp/imac-shutdown-chime.err</string>
+  <string>/tmp/imac-shutdown-chime-daemon.err</string>
 </dict>
 </plist>
