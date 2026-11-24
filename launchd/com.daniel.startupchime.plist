@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.daniel.startupchime</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/usr/bin/afplay</string>
+    <string>-v</string>
+    <string>1.2</string>
+    <string>/Users/Shared/chime/chime-30s.mp3</string>
+  </array>
+  <key>RunAtLoad</key>
+  <true/>
+</dict>
+</plist>

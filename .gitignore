@@ -1,0 +1,11 @@
+# Audio is supplied by the user and is not committed
+*.mp3
+*.wav
+*.m4a
+*.flac
+*.ogg
+
+# Local/editor files
+.DS_Store
+*.swp
+*.tmp
