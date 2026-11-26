@@ -62,6 +62,6 @@ License: MIT for the code. Audio remains under its original copyright.
 
 If this project helped you, consider supporting the journey. Contributions help cover lab hardware, hosting, and future open-source networking and security work.
 
-![PayPal QR code to support Daniel Freeman's open-source projects](assets/paypal-qr.png)
+[![Support via PayPal](assets/paypal-qr.png)](https://www.paypal.com/donate/?hosted_button_id=QDHZ2BRA58ZGL)
 
-Scan the code with your phone camera or the PayPal app. Thank you!
+[Donate via PayPal](https://www.paypal.com/donate/?hosted_button_id=QDHZ2BRA58ZGL) or scan the QR code with your phone camera or the PayPal app. Thank you!
